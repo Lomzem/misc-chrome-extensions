@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Pearson Stuff",
+    "version": "1.0",
+    "description": "",
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://login.pearson.com/v1/*",
+                "https://mycourses.pearson.com/course-home*"
+            ],
+            "js": [
+                "pearson-autologin.js",
+                "pearson-choose-physics.js"
+            ]
+        }
+    ]
+}
