@@ -9,7 +9,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://bcportalguard.butte.edu/*"
+                "https://shibboleth.csuchico.edu/*"
             ],
             "js": [
                 "canvas-autologin.js"
