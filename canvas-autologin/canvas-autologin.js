@@ -1,17 +1,29 @@
-(function() {
-    'use strict';
-    const user = document.getElementById("username");
-    const login = document.getElementsByName("_eventId_proceed")[0];
-    const pwd = document.getElementById("password");
+// ==UserScript==
+// @name         Canvas Autologin
+// @version      2025-10-20
+// @description  Automatically login to Canvas
+// @author       Lomzem
+// @match        https://shibboleth.csuchico.edu/*
+// ==/UserScript==
 
-    function userFilled() {
-        if (user.value.length == 0 || pwd.value.length == 0) {
-            return;
-        }
+(function () {
+  "use strict";
 
-        clearInterval(checkFilled);
-        login.click();
+  /** @type {HTMLInputElement | null} */
+  const username = document.querySelector("input#username");
+
+  /**@type {HTMLInputElement | null} */
+  const password = document.querySelector("input#password");
+
+  /** @type {HTMLInputElement | null} */
+  const loginBtn = document.querySelector('input[type="submit"]');
+
+  const submitIfFilled = () => {
+    if (username.value.length > 0 && password.value.length > 0) {
+      loginBtn.click();
     }
+  };
 
-    const checkFilled = setInterval(userFilled, 100);
+  username.addEventListener("change", submitIfFilled);
+  password.addEventListener("change", submitIfFilled);
 })();
